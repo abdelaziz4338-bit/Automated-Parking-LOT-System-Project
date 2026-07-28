@@ -100,6 +100,8 @@ The project follows a **Layered Architecture (MCAL / HAL / APP)** to ensure modu
       │                   │                          │
       └──────────────► Return to Idle ◄──────────────┘
 
+
+
 ------------------------------------------------------------------------------------------------------------------------------
 ## 🧠 System State Machine
 
@@ -265,15 +267,15 @@ Automation_Parking_System
 |------------|--------------|------|-------------|
 
 
-===================================*LCD*===========================================================================
+===================================*LCD*=============================
 | LCD Data (D0–D7) | PA0–PA7 | PORTA | LCD 8-bit Data Bus |
 | LCD RS | PB0 | PORTB | Register Select |
 | LCD RW | PB1 | PORTB | Read / Write |
 | LCD EN | PB2 | PORTB | Enable Signal |
-===================================================================================================================
+======================================================================
 
 
-==============================================*KPD*=================================================================
+==============================================*KPD*====================
 | Keypad Row 0 | PC0 | PORTC | Keypad Row 0 |
 | Keypad Row 1 | PC1 | PORTC | Keypad Row 1 |
 | Keypad Row 2 | PC2 | PORTC | Keypad Row 2 |
@@ -282,7 +284,7 @@ Automation_Parking_System
 | Keypad Column 1 | PC5 | PORTC | Keypad Column 1 |
 | Keypad Column 2 | PC6 | PORTC | Keypad Column 2 |
 | Keypad Column 3 | PC7 | PORTC | Keypad Column 3 |
-=====================================================================================================================
+=======================================================================
 
 | Entry Button | PD2 (INT0) | PORTD | Vehicle Entry Request |
 | Exit Button | PD3 (INT1) | PORTD | Vehicle Exit Request |
@@ -292,7 +294,7 @@ Automation_Parking_System
 | UART RX | PD0 (RXD) | PORTD | Serial Data Reception |
 
 
-=====================================*LED*=============================================================================
+=====================================*LED*============================
 | Green LED | PB3 | PORTB | Parking Available Indicator |
 | Red LED | PB4 | PORTB | Parking Full Indicator |
 
