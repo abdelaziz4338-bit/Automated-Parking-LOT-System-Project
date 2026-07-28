@@ -346,7 +346,7 @@ SYSTEM RESET
 
 -----------------------------------------------------------------------------------------------------------------------------------
 
-## 👥 Team 4 -----=> Embedded_Elite <=-----
+👥 Team 4 -----=> Embedded_Elite <=-----
 
 | Team Member | Role | Responsibilities |
 |-------------|------|------------------|
@@ -358,19 +358,19 @@ SYSTEM RESET
 
 -----------------------------------------------------------------------------------------------------------------------------------
 
-## 👨‍🏫 Supervisor
+👨‍🏫 Supervisor
 
 **Eng. Hesham Ahmed**
 
 -----------------------------------------------------------------------------------------------------------------------------------
 
-## 📜 License
+📜 License
 
 Developed as part of the **NTI Embedded Systems Training Program** for educational purposes.
 
 -----------------------------------------------------------------------------------------------------------------------------------
 
-## ⭐ Acknowledgment
+⭐ Acknowledgment
 
 Special thanks to **National Telecommunication Institute (NTI)** and **Eng. Hesham Ahmed** and **Gestell Team** for their guidance and support throughout the project.
 
