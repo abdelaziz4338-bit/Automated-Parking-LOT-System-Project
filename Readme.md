@@ -319,12 +319,10 @@ Automated_Parking_System/
 | UART TX | PD1 (TXD) | PORTD | UART Transmission |
 | UART RX | PD0 (RXD) | PORTD | UART Reception |
 ```
-----------------------------------------------------------------------------------------------------------------------------------
-
-## 📡 UART Log Example
-
+```
+-----------------------------------------------------------------------------------------------------------------------------------
+## 📨 UART Log Example
 ```text
-->text<-
 SYSTEM READY
 ENTRY GATE OPENED
 VEHICLE ENTERED
