@@ -33,7 +33,7 @@ static uint8_t Admin_CheckPassword()
     uint8_t Index;
     uint8_t Correct = 1;
 
-    LCD_Clear();
+    Lcd_ClearScreen;
     LCD_WriteString("Password:", Lcd_4bitMode);
 
     for(Index = 0;
