@@ -348,7 +348,7 @@ SYSTEM RESET
 | Team Member | Role | Responsibilities |
 |-------------|------|------------------|
 | *Abdulrahman Ali Abdelaziz Ali* | *Team Leader & MCAL/HAL Developer* | Project Architecture, APP Layer Development, DIO Driver, Keypad Driver, System Integration, GitHub Management, Documentation (README), Code Review, Final Testing & Debugging |
-| *Yousef Mohamed Al-Sayed Abohashem Hassan* | *MCAL/HAL Developer* | EXTI Driver, LED Driver |
+| *Yousef Mohamed Al-Sayed Abohashem Hassan* | *MCAL/HAL Developer* | EXTI Driver, LED Driver ,App Layer Development|
 | *Omar Hamdy Hamed Abdelrahman* | *HAL & Communication Developer* | LCD Driver, UART Driver |
 | *Omar Alaa Eldin Abdelrady* | *MCAL Developer* | Timer1 Driver, PWM Generation |
 | *Mina Ramy Rizk Youssef* | *HAL Developer & Simulation Engineer* | Servo Motor Driver, Proteus Simulation, Hardware Integration |
