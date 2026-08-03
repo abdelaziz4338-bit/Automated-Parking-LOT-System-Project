@@ -1,10 +1,9 @@
 #ifndef _KPD_INTERFACE_H
 #define _KPD_INTERFACE_H
-#pragma once
 #include <stdint.h>
 #include "../../MCAL/DIO/DIO_Interface.h"
-#include"../../COMMON/Definition.h"
-#include"../../COMMON/Bitmath.h"
+#include"../../LIB/Definition.h"
+#include"../../LIB/Bitmath.h"
 #include "KPD_Private.h"
 #include "KPD_Config.h"
 

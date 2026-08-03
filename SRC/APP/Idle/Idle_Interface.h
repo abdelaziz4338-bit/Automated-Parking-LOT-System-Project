@@ -1,7 +1,7 @@
 /**
  * @file    Idle_Interface.h
- * @author (developer)  
- * @author (reviewer)
+ * @author (yousef)  
+ * @author (Eng/Hesham)
  * @brief  
  * @details
  * @version
@@ -12,6 +12,7 @@
 #ifndef IDLE_INTERFACE_H
 #define IDLE_INTERFACE_H
 
-
+void Idle_Init();
+void Idle_Run();
 
 #endif /* IDLE_INTERFACE_H */

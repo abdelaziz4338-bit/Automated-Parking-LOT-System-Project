@@ -1,7 +1,7 @@
 /**
  * @file    SpotCounter_Private.h
- * @author (developer)  
- * @author (reviewer)
+ * @author (yousef)  
+ * @author (Eng/Hesham)
  * @brief  
  * @details
  * @version

@@ -1,7 +1,7 @@
 #include "EXTI_Interface.h"
 #include "EXTI_Private.h"
-#include"../../COMMON/Definition.h"
-#include"../../COMMON/Bitmath.h"
+#include"../../LIB/Definition.h"
+#include"../../LIB/Bitmath.h"
 #include"../Atmega32regmap.h"
 
 
@@ -99,14 +99,39 @@ void EXTI_Disable(uint8_t InterruptName)
     }
 }
 
-static void (*EXTI0)(void) = NULL;
-void EXTI0_CallBack(void (*PF)(void)){
-    if(PF != NULL){
-        EXTI0 = PF;
+static void (*Ptr[Numbers_Interrupts])(void)={0};
+
+void EXTI_CallBack(uint8_t InterruptName, void (*Func)(void))
+{
+    if((InterruptName <= Exti_Interrupt2) && (Func != 0))
+    {
+     Ptr[InterruptName]=Func;
     }
 }
 
-void __vector_1(void){
-    EXTI0();
+void __vector_1(void) __attribute__((signal));
+void __vector_1(void)
+{
+    if (Ptr[Exti_Interrupt0]!=Null)
+    {
+     Ptr[Exti_Interrupt0]();
+    }
 }
 
+void __vector_2(void) __attribute__((signal));
+void __vector_2(void)
+{
+    if (Ptr[Exti_Interrupt1]!=Null)
+    {
+     Ptr[Exti_Interrupt1]();
+    }
+}
+
+void __vector_3(void) __attribute__((signal));
+void __vector_3(void)
+{
+    if (Ptr[Exti_Interrupt2]!=Null)
+    {
+     Ptr[Exti_Interrupt2]();
+    }
+}

@@ -18,12 +18,17 @@
 #define Exti_INTF2 5
 
 
-#define Exti_LowLevel 0
-#define Exti_AnyChange 1
-#define Exti_FallingEdge 2
-#define Exti_RisingEdge 3
+#define Exti_LowLevel    4
+#define Exti_AnyChange   5
+#define Exti_FallingEdge 6
+#define Exti_RisingEdge  7
 
 
+#define Exti_Interrupt0    0 
+#define Exti_Interrupt1    1
+#define Exti_Interrupt2    2 
+
+#define Numbers_Interrupts   3
 
 
 #endif 

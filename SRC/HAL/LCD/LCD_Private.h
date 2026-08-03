@@ -6,6 +6,7 @@
 #define Lcd_ClearScreen   0x01
 
 #define Lcd_8bitMode2Line5x8F   0x38
+#define Lcd_4bitMode2Line5x8F   0x28
 
 #define Lcd_DisplayOff     0x08  
 #define Lcd_DisplayOn      0x0C

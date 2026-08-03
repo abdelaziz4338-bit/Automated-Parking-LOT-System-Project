@@ -1,7 +1,7 @@
 #ifndef _GIE_INTERFACE_H
 #define _GIE_INTERFACE_H
-#include "../../COMMON/Bitmath.h"
-#include "../../COMMON/Definition.h"
+#include "../../LIB/Bitmath.h"
+#include "../../LIB/Definition.h"
 #include "../Atmega32regmap.h"
 #include "GIE_Private.h"
 

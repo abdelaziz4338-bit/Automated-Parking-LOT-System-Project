@@ -2,8 +2,8 @@
 #define _DIO_INTERFACE_H
 
 #include<stdint.h>
-#include"../../COMMON/Definition.h"
-#include"../../COMMON/Bitmath.h"
+#include"../../LIB/Definition.h"
+#include"../../LIB/Bitmath.h"
 #include"../Atmega32regmap.h"
 #include"DIO_Private.h"
 

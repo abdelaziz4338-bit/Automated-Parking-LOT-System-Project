@@ -1,26 +1,17 @@
-#include <util/delay.h>
-#include "MCAL/DIO/DIO_Interface.h"
-#include "HAL/LED/LED_Interface.h"
-#include "HAL/LCD/LCD_Interface.h"
-#include "HAL/KEYPAD/KPD_Interface.h"
+#include "APP/Init/Init_Interface.h"
+#include "APP/SpotCounter/SpotCounter_Interface.h"
+#include "APP/Idle/Idle_Interface.h"
+#include "APP/ParkingManager/ParkingManager_Interface.h"
 
-
-
-//static volatile uint8_t UartData = 0 ;
-//======LCD==========
-void main()
+int main(void)
 {
-    LCD_Init(Lcd_8bitMode);
-    KeyPad_Init();
-    uint8_t keypadvalue=0XFF;
+    App_Init();
 
     while(1)
     {
-      keypadvalue = KeyPad_Getpressedkey();
-      if(keypadvalue!=0XFF){
-          LCD_WriteData(keypadvalue,Lcd_8bitMode);
-
-      }
+        ParkingManager_Run();
+        Idle_Run();
     }
-}
 
+    return 0;
+}

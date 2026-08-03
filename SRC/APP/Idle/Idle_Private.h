@@ -1,7 +1,7 @@
 /**
  * @file    Idle_Private.h
- * @author (developer)  
- * @author (reviewer)
+ * @author (yousef)  
+ * @author (Eng/Hesham Ahmed)
  * @brief  
  * @details
  * @version

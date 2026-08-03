@@ -1,83 +1,168 @@
 /**
  * @file    Admin_Program.c
- * @author (developer)  
- * @author (reviewer)
+ * @author (developer: Abdulrahman Ali)  
+ * @author (reviewer: Hesham Ahmed)
  * @brief  
  * @details
  * @version
- * @date
+ * @date 4/8/2026
  * @copyright Copyright (c) 2026, Gestell Company
  */
-
-#include "Admin_Interface.h"
-#include "Admin_Private.h"
-#include "Admin_Config.h"
-
 #include <stdint.h>
-
-#include "LCD_Interface.h"
-#include "KPD_Interface.h"
-#include "UART_Interface.h"
-
-#include "SpotCounter_Interface.h"
-#include "GateController_Interface.h"
-
 #include "Admin_Interface.h"
 #include "Admin_Private.h"
+#include <util/delay.h>
+#include "../../HAL/KeyPad/KPD_Interface.h"
+#include "../../HAL/LCD/LCD_Interface.h"
+#include "../../HAL/LED/LED_Interface.h"
+#include "../../MCAL/UART/UART_Interface.h"
 
-static uint8_t Local_Password[] = {'1','2','3','4'};
+#include "../SpotCounter/SpotCounter_Interface.h"
+#include "../ParkingManager/ParkingManager_Interface.h"
+#include "../Gatecontroller/Gatecontroller_Interface.h"
+#include "../Error/Error_Interface.h"
 
-static uint8_t Admin_CheckPassword()
+static uint8_t AdminLoggedIn;
+
+static uint8_t Password[ADMIN_PASSWORD_LENGTH] ={'1','2','3','4'};
+
+
+void Admin_Init()
+{
+    AdminLoggedIn = 0;
+}
+
+
+uint8_t Admin_IsLoggedIn(void)
+{
+    return AdminLoggedIn;
+}
+
+
+void Admin_Logout()
+{
+    AdminLoggedIn = 0;
+}
+
+
+uint8_t Admin_Login()
 {
     uint8_t Key;
-    uint8_t Index;
+    uint8_t Buffer[ADMIN_PASSWORD_LENGTH];
+
+    uint8_t Index = 0;
     uint8_t Correct = 1;
 
-    Lcd_ClearScreen;
-    LCD_WriteString("Password:", Lcd_4bitMode);
 
-    for(Index = 0;
-        Index < ADMIN_PASSWORD_LENGTH;
-        Index++)
+    LCD_GotoXY(0,0);
+
+    LCD_WriteString( (uint8_t*)"PASSWORD:",Lcd_4bitMode);
+       
+        
+
+
+    LCD_GotoXY(0,1);
+
+
+    while(Index < ADMIN_PASSWORD_LENGTH)
     {
-        do
-        {
-            Key = KeyPad_Getpressedkey();
-        }
-        while(Key == 0);
+        Key = KeyPad_Getpressedkey();
 
-        if(Key != Local_Password[Index])
+
+        if(Key >= '0' && Key <= '9')
+        {
+            Buffer[Index] = Key;
+
+            LCD_WriteData('*',Lcd_4bitMode);
+
+            Index++;
+            _delay_ms(200);
+            while(KeyPad_Getpressedkey() != 0xFF);
+        }
+    }
+
+
+    for(Index = 0; Index < ADMIN_PASSWORD_LENGTH; Index++)
+    {
+        if(Buffer[Index] != Password[Index])
         {
             Correct = 0;
         }
     }
 
-    return Correct;
+
+    if(Correct)
+    {
+        AdminLoggedIn = 1;
+
+        LCD_GotoXY(0,0);
+        LCD_WriteString( (uint8_t*)"ADMIN LOGIN",Lcd_4bitMode);
+        UART_SendStringPolling((uint8_t*)"ADMIN LOGIN\n");
+        Led_on(Dio_GroupA, Dio_Pin3 ,SourceConnection);
+        return 1;
+    }
+
+
+    AdminLoggedIn = 0;
+
+    LCD_GotoXY(0,0);
+    LCD_WriteString((uint8_t*)"WRONG PASSWORD",Lcd_4bitMode);
+     Led_on(Dio_GroupA, Dio_Pin4 ,SourceConnection); 
+    
+
+    return 0;
 }
 
-void Admin_Run()
+
+void Admin_Process()
 {
-    if(Admin_CheckPassword())
+    uint8_t Key;
+
+
+    if(AdminLoggedIn == 0)
     {
-        Lcd_ClearScreen;
-        LCD_WriteString("ADMIN LOGIN", Lcd_4bitMode);
-
-        UART_SendStringPolling("ADMIN LOGIN");
-
-        /*
-         * Admin menu will be implemented here:
-         *
-         * 1 -> Open Gate
-         * 2 -> Close Gate
-         * 3 -> Reset Counter
-         * 4 -> Change Capacity
-         * 5 -> Maintenance
-         * 6 -> Clear Fault
-         */
+        if(Admin_Login() == 0)
+        {
+            return;
+        }
     }
-    else
+
+
+    while(AdminLoggedIn)
     {
-        Lcd_ClearScreen;
-        LCD_WriteString("Wrong Password", Lcd_4bitMode);
+        LCD_GotoXY(0,0);
+        LCD_WriteString( (uint8_t*)"A:OPEN B:CLOSE",Lcd_4bitMode);
+            
+        LCD_GotoXY(0,1);
+        LCD_WriteString((uint8_t*)"C:RESET D:EXIT",Lcd_4bitMode);
+            
+        Key = KeyPad_Getpressedkey();
+
+
+        if(Key == 'A')
+        {
+            GateController_OpenEntry();
+        }
+
+
+        else if(Key == 'B')
+        {
+            GateController_CloseEntry();
+        }
+
+
+        else if(Key == 'C')
+        {
+            ParkingManager_Run();
+
+            UART_SendStringPolling((uint8_t*)"SYSTEM RESET\n");
+                
+        }
+
+
+        else if(Key == 'D')
+        {
+            Admin_Logout();
+        }
     }
 }

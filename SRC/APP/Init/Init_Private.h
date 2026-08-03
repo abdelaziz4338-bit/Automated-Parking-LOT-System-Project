@@ -1,17 +1,17 @@
 /**
  * @file    Init_Private.h
- * @author (developer)  
- * @author (reviewer)
+ * @author (Developer: Abdulrahman Ali)  
+ * @author (Reviewer:ENG\Hesham Ahmed)
  * @brief  
  * @details
  * @version
- * @date
+ * @date 4/8/2026
  * @copyright Copyright (c) 2026, Gestell Company
  */
 
 #ifndef INIT_PRIVATE_H
 #define INIT_PRIVATE_H
 
-
+#define PARKING_CAPACITY 20
 
 #endif /* INIT_PRIVATE_H */

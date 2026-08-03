@@ -7,6 +7,6 @@
 #define Lcd_RWGroup    Dio_GroupA
 #define Lcd_EPin       Dio_Pin2
 #define Lcd_EGroup     Dio_GroupA
-#define Lcd_DataGroup  Dio_GroupC
+#define Lcd_DataGroup  Dio_GroupB
 
 #endif

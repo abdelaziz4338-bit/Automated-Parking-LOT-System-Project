@@ -1,11 +1,11 @@
 /**
  * @file    Admin_Private.h
- * @author (developer)  
- * @author (reviewer)
+ * @author (Developer: Abdulrahman Ali)  
+ * @author (Eng /Hesham Ahmed)
  * @brief  
  * @details
  * @version
- * @date
+ * @date 4/8/2026
  * @copyright Copyright (c) 2026, Gestell Company
  */
 

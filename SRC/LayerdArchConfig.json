@@ -1,8 +1,8 @@
 {
   "projectName": "LayerdArch",
-  "projectPath": "C:\\LayerdArch",
-  "outputPath": "C:\\LayerdArch",
-  "outputName": "KAYPAD",
+  "projectPath": "C:\\Users\\lenovo\\OneDrive\\Desktop\\LayerdArch",
+  "outputPath": "C:\\Users\\lenovo\\OneDrive\\Desktop\\LayerdArch",
+  "outputName": "",
   "target": "AVR",
   "mcu": "atmega32",
   "language": "C",
@@ -25,6 +25,6 @@
   "port": "",
   "baudRate": "115200",
   "timeout": "5000",
-  "firmwareFile": "C:\\LayerdArch/KAYPAD.hex",
+  "firmwareFile": "C:\\Users\\lenovo\\OneDrive\\Desktop\\LayerdArch/LayerdArch.hex",
   "programmer": "usbasp"
 }

@@ -47,13 +47,20 @@ for(Rows_Counter=0;Rows_Counter<kpd_RowNo;Rows_Counter++){
     DIO_WritePin(kpd_RowsGroup[Rows_Counter],kpd_RowsPin[Rows_Counter],Low);
     for(Columns_Counter=0;Columns_Counter<kpd_ColumnsNo;Columns_Counter++){
          DIO_ReadPin(kpd_columnsGroup[Columns_Counter],kpd_columnsPin[Columns_Counter],&BtnState);
-         if(BtnState==kpd_BtnPressed){
-              // KeyPad Value
-              kpd_value = kpd_keysvalue[Rows_Counter][Columns_Counter];
-              DIO_WritePin(kpd_RowsGroup[Rows_Counter],kpd_RowsPin[Rows_Counter],High);
-              _delay_ms(100);
-              return kpd_value;
-            }
+         if(BtnState==kpd_BtnPressed)
+         {
+           kpd_value = kpd_keysvalue[Rows_Counter][Columns_Counter];
+           do
+           {
+               DIO_ReadPin(kpd_columnsGroup[Columns_Counter],
+                           kpd_columnsPin[Columns_Counter],
+                           &BtnState);
+           }
+           while(BtnState == kpd_BtnPressed);
+           _delay_ms(20);   // Debounce
+           DIO_WritePin(kpd_RowsGroup[Rows_Counter],kpd_RowsPin[Rows_Counter],High);
+           return kpd_value;
+         }
         }
          DIO_WritePin(kpd_RowsGroup[Rows_Counter],kpd_RowsPin[Rows_Counter],High);
     }

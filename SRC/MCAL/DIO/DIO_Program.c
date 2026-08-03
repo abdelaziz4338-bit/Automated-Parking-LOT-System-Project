@@ -127,19 +127,19 @@ void DIO_Toggle(uint8_t GroupName , uint8_t PinNumber){
 switch(GroupName)
     {
         case Dio_GroupA:
-            TOG_BIT(PORTA, PinNumber);
+            TOGGLE_BIT(PORTA, PinNumber);
             break;
 
         case Dio_GroupB:
-            TOG_BIT(PORTB, PinNumber);
+            TOGGLE_BIT(PORTB, PinNumber);
             break;
 
         case Dio_GroupC:
-            TOG_BIT(PORTC, PinNumber);
+            TOGGLE_BIT(PORTC, PinNumber);
             break;
 
         case Dio_GroupD:
-            TOG_BIT(PORTD, PinNumber);
+            TOGGLE_BIT(PORTD, PinNumber);
             break;
     }
 

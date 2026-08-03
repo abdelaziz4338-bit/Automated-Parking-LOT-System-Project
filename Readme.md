@@ -313,7 +313,7 @@ Automated_Parking_System/
 | Entry Button | PD2 (INT0) | PORTD | Vehicle Entry Detection |
 | Exit Button | PD3 (INT1) | PORTD | Vehicle Exit Detection |
 | Entry Servo | PD5 (OC1A) | PORTD | Entry Gate PWM |
-| Exit Servo | PD4 (OC1B) | PORTD | Exit Gate PWM |
+| Exit Servo | PD6 (OC1B) | PORTD | Exit Gate PWM |
 | Green LED | PB3 | PORTB | Parking Available Indicator |
 | Red LED | PB4 | PORTB | Parking Full Indicator |
 | UART TX | PD1 (TXD) | PORTD | UART Transmission |
@@ -347,11 +347,11 @@ SYSTEM RESET
 
 | Team Member | Role | Responsibilities |
 |-------------|------|------------------|
-| *Abdulrahman Ali Abdelaziz Ali* | *Team Leader & MCAL/HAL Developer* | Project Architecture, APP Layer Development, DIO Driver, Keypad Driver, System Integration, GitHub Management, Documentation (README), Code Review, Final Testing & Debugging |
-| *Yousef Mohamed Al-Sayed Abohashem Hassan* | *MCAL/HAL Developer* | EXTI Driver, LED Driver ,App Layer Development|
+| *Abdulrahman Ali Abdelaziz Ali* | *Team Leader & MCAL/HAL Developer* | Project Architecture, APP Layer Development, DIO Driver, Keypad Driver, System Integration, GitHub Management, Documentation (README),Proteus Simulation,Hardware Integration  , Code Review, Final Testing & Debugging |
+| *Yousef Mohamed Al-Sayed Abohashem Hassan* | *MCAL/HAL Developer* | EXTI Driver, Proteus Simulation, Hardware Integration, LED Driver ,App Layer Development|
 | *Omar Hamdy Hamed Abdelrahman* | *HAL & Communication Developer* | LCD Driver, UART Driver |
 | *Omar Alaa Eldin Abdelrady* | *MCAL Developer* | Timer1 Driver, PWM Generation |
-| *Mina Ramy Rizk Youssef* | *HAL Developer & Simulation Engineer* | Servo Motor Driver, Proteus Simulation, Hardware Integration |
+| *Mina Ramy Rizk Youssef* | *HAL Developer & Simulation Engineer* | Servo Motor Driver |
 
 -----------------------------------------------------------------------------------------------------------------------------------
 

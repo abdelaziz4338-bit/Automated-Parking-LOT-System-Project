@@ -10,10 +10,10 @@
 #define kpd_R2Pin   Dio_Pin2
 #define kpd_R3Pin   Dio_Pin3
 //ROWGROUP
-#define kpd_R0Group   Dio_GroupB
-#define kpd_R1Group   Dio_GroupB
-#define kpd_R2Group   Dio_GroupB
-#define kpd_R3Group   Dio_GroupB 
+#define kpd_R0Group   Dio_GroupC
+#define kpd_R1Group   Dio_GroupC
+#define kpd_R2Group   Dio_GroupC
+#define kpd_R3Group   Dio_GroupC 
 //==========================================================//
 //COLOMPIN
 #define kpd_C0Pin   Dio_Pin4
@@ -21,10 +21,10 @@
 #define kpd_C2Pin   Dio_Pin6
 #define kpd_C3Pin   Dio_Pin7
 //COLOMGROUP
-#define kpd_C0Group   Dio_GroupB
-#define kpd_C1Group   Dio_GroupB
-#define kpd_C2Group   Dio_GroupB
-#define kpd_C3Group   Dio_GroupB
+#define kpd_C0Group   Dio_GroupC
+#define kpd_C1Group   Dio_GroupC
+#define kpd_C2Group   Dio_GroupC
+#define kpd_C3Group   Dio_GroupC
 //=========================================================//
 
 
