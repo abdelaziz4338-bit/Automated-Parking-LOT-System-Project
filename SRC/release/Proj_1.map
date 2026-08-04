@@ -808,5 +808,5 @@ END GROUP
 
 .debug_sup
  *(.debug_sup)
-OUTPUT(C:\LayerdArch2\release\GG2.elf elf32-avr)
+OUTPUT(C:\LayerdArch2\release\Proj_1.elf elf32-avr)
 LOAD linker stubs

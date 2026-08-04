@@ -1,0 +1,2 @@
+   text	   data	    bss	    dec	    hex	filename
+   7216	    540	     29	   7785	   1e69	C:\LayerdArch2\release\Proj_1.elf
