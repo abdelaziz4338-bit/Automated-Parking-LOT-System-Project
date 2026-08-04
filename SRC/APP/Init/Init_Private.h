@@ -12,6 +12,6 @@
 #ifndef INIT_PRIVATE_H
 #define INIT_PRIVATE_H
 
-#define PARKING_CAPACITY 20
+#define PARKING_CAPACITY 2
 
 #endif /* INIT_PRIVATE_H */

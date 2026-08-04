@@ -83,7 +83,7 @@ UART_Init(Uart_Config);
     
 
     // Application 
-    ParkingManager_Init(20);
+    ParkingManager_Init(2);
     Entry_Init();
     Exit_Init();
     GateController_Init();
@@ -93,6 +93,12 @@ UART_Init(Uart_Config);
 
 
 // Initial the LCD with a welcome message
+    LCD_WriteInstruction(Lcd_ClearScreen, Lcd_4bitMode);
+        LCD_GotoXY(0, 0);
+    LCD_WriteString((uint8_t*)"SYSTEM " , Lcd_4bitMode);
+    LCD_GotoXY(1, 0);
+    LCD_WriteString((uint8_t*)"START " , Lcd_4bitMode);
+    _delay_ms(1500);
     LCD_WriteInstruction(Lcd_ClearScreen, Lcd_4bitMode);
     LCD_GotoXY(0, 0);
     LCD_WriteString((uint8_t*)"Welcome to" , Lcd_4bitMode);

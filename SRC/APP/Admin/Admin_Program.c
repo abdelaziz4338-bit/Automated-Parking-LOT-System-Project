@@ -107,7 +107,11 @@ uint8_t Admin_Login()
 
     LCD_GotoXY(0,0);
     LCD_WriteString((uint8_t*)"WRONG PASSWORD",Lcd_4bitMode);
-     Led_on(Dio_GroupA, Dio_Pin4 ,SourceConnection); 
+    Led_on(Dio_GroupA, Dio_Pin4 ,SourceConnection); 
+    _delay_ms(1500);
+    LCD_WriteInstruction( Lcd_ClearScreen,Lcd_4bitMode);
+    LCD_WriteString((uint8_t*)"ERROR",Lcd_4bitMode);
+
     
 
     return 0;
@@ -133,7 +137,7 @@ void Admin_Process()
         LCD_GotoXY(0,0);
         LCD_WriteString( (uint8_t*)"A:OPEN B:CLOSE",Lcd_4bitMode);
             
-        LCD_GotoXY(0,1);
+        LCD_GotoXY(1,0);
         LCD_WriteString((uint8_t*)"C:RESET D:EXIT",Lcd_4bitMode);
             
         Key = KeyPad_Getpressedkey();

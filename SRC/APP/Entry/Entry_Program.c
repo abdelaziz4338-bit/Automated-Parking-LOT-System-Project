@@ -53,6 +53,7 @@ void Entry_Process()
     LCD_WriteNumber( SpotCounter_GetAvailable(),Lcd_4bitMode);
        
     LCD_GotoXY(0, 1);
+    LCD_WriteInstruction( Lcd_ClearScreen,Lcd_4bitMode);
 
     LCD_WriteString((uint8_t*)"Press E",Lcd_4bitMode);
        
@@ -71,9 +72,7 @@ void Entry_Process()
     
     LCD_WriteString((uint8_t*)"ENTER PASSWORD",Lcd_4bitMode);
         
-
-
-    LCD_GotoXY(0, 1);
+    LCD_GotoXY(1, 0);
 
 
     uint8_t Password[4];
@@ -137,17 +136,24 @@ void Entry_Process()
     {
       LCD_WriteInstruction(Lcd_ClearScreen, Lcd_4bitMode);
       LCD_WriteString((uint8_t*)"WRONG PASSWORD", Lcd_4bitMode);
-      
+      _delay_ms(1500);
+     LCD_WriteInstruction(Lcd_ClearScreen, Lcd_4bitMode);
+      LCD_WriteString((uint8_t*)"ERROR SYSTEM",Lcd_4bitMode);
+      UART_SendStringPolling((uint8_t*)" ERROR ENTERN \n");
+      _delay_ms(1000);
+     LCD_WriteInstruction(Lcd_ClearScreen, Lcd_4bitMode);
+      LCD_WriteString((uint8_t*)"SYSTEM WAITING....", Lcd_4bitMode);
+        _delay_ms(1500);
       Led_on(Dio_GroupA, Dio_Pin4, SourceConnection);
       Led_off(Dio_GroupA, Dio_Pin3, SourceConnection);
       
-      _delay_ms(1500);
+    //  _delay_ms(2500);
       
       Led_off(Dio_GroupA, Dio_Pin4, SourceConnection);
       Led_on(Dio_GroupA, Dio_Pin3, SourceConnection);
-      
+
       LCD_WriteInstruction(Lcd_ClearScreen, Lcd_4bitMode);
-      
+
       EntryFlag = 0;
     }
 }
