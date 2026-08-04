@@ -19,6 +19,7 @@
 #include "../../HAL/LCD/LCD_Interface.h"
 #include "../../MCAL/UART/UART_Interface.h"
 #include "../ParkingManager/ParkingManager_Interface.h"
+#include "../Init/Init_Private.h"
 #include "../GateController/GateController_Interface.h"
 #include "../SpotCounter/SpotCounter_Interface.h"
 #include"../FULL/Full_Interface.h"
@@ -41,25 +42,15 @@ void Exit_Init()
 
 void Exit_Process()
 {
-    if(SpotCounter_GetAvailable() == 2)
+    if(SpotCounter_GetAvailable() == PARKING_CAPACITY)
 
     {
 
         LCD_WriteInstruction(Lcd_ClearScreen, Lcd_4bitMode);
 
-        LCD_WriteString(
+        LCD_WriteString( (uint8_t*)"PARKING EMPTY",Lcd_4bitMode);
 
-            (uint8_t*)"PARKING EMPTY",
-
-            Lcd_4bitMode
-
-        );
-
-        UART_SendStringPolling(
-
-            (uint8_t*)"ERROR: PARKING EMPTY\r\n"
-
-        );
+        UART_SendStringPolling((uint8_t*)"ERROR: PARKING EMPTY\r\n");
 
         Led_off(Dio_GroupA, Dio_Pin3,SourceConnection);
 
@@ -70,7 +61,6 @@ void Exit_Process()
         LCD_WriteInstruction(Lcd_ClearScreen, Lcd_4bitMode);
 
         LCD_WriteString((uint8_t*)"SYSTEM START",Lcd_4bitMode);
-
 
         _delay_ms(1000);
 
