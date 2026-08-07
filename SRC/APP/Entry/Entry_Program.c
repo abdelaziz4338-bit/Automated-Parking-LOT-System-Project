@@ -20,6 +20,8 @@
 #include "../GateController/GateController_Interface.h"
 #include "../SpotCounter/SpotCounter_Interface.h"
 #include"../FULL/Full_Interface.h"
+#include"../FULL/Full_Private.h"
+
 
 volatile uint8_t EntryFlag = 0;
 
@@ -134,6 +136,8 @@ void Entry_Process()
     }
     else
     {
+       Led_off(FULL_GREEN_LED_GROUP, FULL_GREEN_LED_PIN, SourceConnection);
+       Led_on(FULL_RED_LED_GROUP, FULL_RED_LED_PIN, SourceConnection);
       LCD_WriteInstruction(Lcd_ClearScreen, Lcd_4bitMode);
       LCD_WriteString((uint8_t*)"WRONG PASSWORD", Lcd_4bitMode);
       _delay_ms(1500);

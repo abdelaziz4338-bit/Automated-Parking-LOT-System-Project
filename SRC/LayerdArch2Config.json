@@ -2,7 +2,7 @@
   "projectName": "LayerdArch2",
   "projectPath": "C:\\LayerdArch2",
   "outputPath": "C:\\LayerdArch2",
-  "outputName": "GG2",
+  "outputName": "PROJ V2",
   "target": "AVR",
   "mcu": "atmega32",
   "language": "C",
@@ -25,6 +25,6 @@
   "port": "COM6 - ?Standard Serial over Bluetooth link (COM6)?",
   "baudRate": "115200",
   "timeout": "5000",
-  "firmwareFile": "C:\\LayerdArch2/GG2.hex",
+  "firmwareFile": "C:\\LayerdArch2/PROJ V2.hex",
   "programmer": "usbasp"
 }
