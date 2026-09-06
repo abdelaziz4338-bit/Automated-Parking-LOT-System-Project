@@ -2,9 +2,9 @@
  * @file    Admin_Program.c
  * @author (developer: Abdulrahman Ali)  
  * @author (reviewer: Hesham Ahmed)
- * @brief  
- * @details
- * @version
+ * @brief  This file contains the implementation of the Admin module functions.
+ * @details This module provides functionalities for admin login, logout, and processing admin tasks.
+ * @version 1.0.0
  * @date 4/8/2026
  * @copyright Copyright (c) 2026, Gestell Company
  */
@@ -33,7 +33,7 @@ void Admin_Init()
 }
 
 
-uint8_t Admin_IsLoggedIn(void)
+uint8_t Admin_IsLoggedIn()
 {
     return AdminLoggedIn;
 }
@@ -131,42 +131,5 @@ void Admin_Process()
         }
     }
 
-
-    while(AdminLoggedIn)
-    {
-        LCD_GotoXY(0,0);
-        LCD_WriteString( (uint8_t*)"A:OPEN B:CLOSE",Lcd_4bitMode);
-            
-        LCD_GotoXY(1,0);
-        LCD_WriteString((uint8_t*)"C:RESET D:EXIT",Lcd_4bitMode);
-            
-        Key = KeyPad_Getpressedkey();
-
-
-        if(Key == 'A')
-        {
-            GateController_OpenEntry();
-        }
-
-
-        else if(Key == 'B')
-        {
-            GateController_CloseEntry();
-        }
-
-
-        else if(Key == 'C')
-        {
-            ParkingManager_Run();
-
-            UART_SendStringPolling((uint8_t*)"SYSTEM RESET\n");
-                
-        }
-
-
-        else if(Key == 'D')
-        {
-            Admin_Logout();
-        }
-    }
 }
+

@@ -35,30 +35,30 @@
 #define Uart_USBS   3
 #define Uart_UCSZ1  2 
 #define Uart_UCSZ0  1 
-#define Uart_UCPOL   0 
+#define Uart_UCPOL  0 
 
 
 #define Uart_AsynchronousMode   0
 #define Uart_SynchronousMode    1
 
 
-#define Uart_ParityDisabled 0 
-#define Uart_ParityEven     1 
-#define Uart_ParityOdd      2
-
-#define Uart_1StopBit       0
-#define Uart_2StopBit       1
-
-
-#define Uart_5BitSize       0
-#define Uart_6BitSize       1
-#define Uart_7BitSize       2
-#define Uart_8BitSize       3
-#define Uart_9BitSize       7
-
-#define Uart_EnableRxOnly   0
-#define Uart_EnableTxOnly   1 
-#define Uart_EnableRxAndTx  2
+#define Uart_ParityDisabled    0 
+#define Uart_ParityEven        1 
+#define Uart_ParityOdd         2
+   
+#define Uart_1StopBit          0
+#define Uart_2StopBit          1
+   
+   
+#define Uart_5BitSize          0
+#define Uart_6BitSize          1
+#define Uart_7BitSize          2
+#define Uart_8BitSize          3
+#define Uart_9BitSize          7
+   
+#define Uart_EnableRxOnly      0
+#define Uart_EnableTxOnly      1 
+#define Uart_EnableRxAndTx     2
 
 
 #define Uart_InterruptDisabled      0  
@@ -82,6 +82,11 @@ typedef struct
     uint8_t InterruptSelect ;
      
 }Uart_Config_t;
+
+
+#define UART_RX_BUFFER_SIZE    64
+
+
 
 /* ISR Vectors */
 void __vector_13(void) __attribute__((signal,used)); /* RX Complete */

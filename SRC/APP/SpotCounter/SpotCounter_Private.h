@@ -12,6 +12,7 @@
 #ifndef SPOTCOUNTER_PRIVATE_H
 #define SPOTCOUNTER_PRIVATE_H
 
-
+#define TRUE 1
+#define FALSE 0
 
 #endif /* SPOTCOUNTER_PRIVATE_H */

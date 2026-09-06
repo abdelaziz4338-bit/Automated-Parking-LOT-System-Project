@@ -1,0 +1,2 @@
+   text	   data	    bss	    dec	    hex	filename
+   7226	    496	    157	   7879	   1ec7	C:\Project_Atmega32\release\PRO_1.elf

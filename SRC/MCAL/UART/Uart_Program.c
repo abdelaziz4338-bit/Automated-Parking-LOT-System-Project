@@ -4,8 +4,12 @@
 static void (*PF_UartRX)(uint16_t)= Null; 
 static void (*PF_UartTX)(void)= Null; 
 static void (*PF_UartRE)(void)= Null; 
-
 static Uart_Config_t GlobaleUart_Config = {0} ;
+
+
+
+
+
 /*Initialization API*/
 void UART_Init(Uart_Config_t Uart_Config)
 {
@@ -101,6 +105,7 @@ else if (Uart_Config.SizeCharacterSelect == Uart_9BitSize){
     {
         SET_BIT(UCSRA,Uart_U2X);
     }
+
     //6-BaudRate 
     uint16_t Local_UBRRValue = 0 ; 
     if(Uart_Config.SpeedMode==Uart_DoubleSpeed)
@@ -246,6 +251,35 @@ void UART_SendBufferPolling(uint8_t * Buffer , uint16_t Length)
 
 
 
+uint16_t RX_Buffer[UART_RX_BUFFER_SIZE];
+uint8_t RX_front = 0;
+uint8_t RX_rear = 0;
+
+uint8_t UART_ReceiveByteInterrupt(uint16_t *Data)
+{
+    // Check if the Ring Buffer is empty or not
+    if (RX_front == RX_rear)
+    {
+        return 0;
+    }
+
+     // Read the oldest received byte & raer points to the next byte to be read.
+    *Data = RX_Buffer[RX_rear];
+
+    RX_rear++;
+
+    if (RX_rear >= UART_RX_BUFFER_SIZE)
+    {
+        RX_rear = 0;
+    }
+
+    return 1;
+}
+
+
+
+
+
 
 
 /* Driver Control API */
@@ -330,21 +364,58 @@ void UART_SetRECallback(void (*PF)(void))
 }
 
 
-/* RX Complete */
 void __vector_13(void)
 {
-    if(PF_UartRX!=Null)
+    uint16_t LocalData = 0;
+
+    if (GlobaleUart_Config.SizeCharacterSelect == Uart_9BitSize)
     {
-       uint16_t LocalData = 0 ;
-    //    Check on the Size of character 
-            // if Size less than 9  -> LocalData = UDR_Reg;
-            // if Size  == 9
-                // Read the RXB8 Update in LocalData 
-                // Update the UDR 
-            PF_UartRX(LocalData);
+        
+        // Read the 9th bit first from RXB8
+        LocalData = ((uint16_t)((UCSRB >> Uart_RXB8) & 0x01)) << 8;
+
+        //Read the lower 8 bits from UDR
+        LocalData |= UDR;
+    }
+    else
+    {
+        /*
+         * For 5/6/7/8-bit character size,
+         * the received data is read from UDR only.
+         */
+        LocalData = UDR;
     }
 
+    //Store received data in RX Ring Buffer ,at the position pointed to by RX_front.
+    RX_Buffer[RX_front] = LocalData;
+
+    // Move front to the next position.
+    RX_front++;
+
+    // If front reaches the end of the buffer,return it to the beginning.
+    if (RX_front >= UART_RX_BUFFER_SIZE)
+    {
+        RX_front = 0;
+    }
 }
+
+
+
+// /* RX Complete */
+// void __vector_13(void)
+// {
+//     if(PF_UartRX!=Null)
+//     {
+//        uint16_t LocalData = 0 ;
+//     //    Check on the Size of character 
+//             // if Size less than 9  -> LocalData = UDR_Reg;
+//             // if Size  == 9
+//                 // Read the RXB8 Update in LocalData 
+//                 // Update the UDR 
+//             PF_UartRX(LocalData);
+//     }
+
+// }
 /* TX Complete */
 void __vector_15(void)
 {

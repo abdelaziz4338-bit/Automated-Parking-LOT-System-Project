@@ -19,11 +19,17 @@
 
 
 void UART_Init(Uart_Config_t Uart_Config);
-
 void UART_SendBytePolling(uint16_t Data);
 uint16_t UART_ReceiveBytePolling();
 void UART_SendStringPolling(uint8_t* String);
 void UART_ReceiveStringPolling(uint8_t* Buffer, uint8_t Terminator);
+
+
+uint8_t UART_ReceiveByteInterrupt(uint16_t *Data); // interrupt receive  Ring Buffer
+
+
+
+
 
 
 
@@ -41,8 +47,6 @@ void UART_EnableRX();
 void UART_EnableTX();
 void UART_DisableRX();
 void UART_DisableTX();
-
-
 
 
 void UART_SendByteAsync(uint16_t Data);
